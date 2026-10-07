@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variant picker</title>
+<!--
+  Full-size variant picker. Copy this file next to the variants, then:
+  1. Put each variant inside its own <section class="variant" data-name="...">, at real size,
+     with realistic surrounding context (a toast needs a page behind it, a card needs siblings).
+  2. Give each variant its styles under a scope such as [data-name="quiet"] so they cannot leak.
+  3. Leave the picker block below as it is. It is chrome, not a contestant: its look never adapts
+     to the project, and switching is instant on purpose (people flip dozens of times).
+  In a framework project, rebuild the same behaviour as an isolated route (/prototypes/<slug>)
+  that nothing in production imports. Delete it once a variant is chosen.
+-->
+<style>
+  .variant { display: none; }
+  .variant.is-active { display: block; }
+
+  .ic-picker {
+    position: fixed; right: 16px; bottom: 16px; z-index: 2147483647;
+    display: flex; gap: 4px; align-items: center;
+    padding: 6px; border-radius: 10px;
+    background: #111; color: #f5f5f5;
+    font: 500 13px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+    box-shadow: 0 4px 18px rgb(0 0 0 / 0.35);
+  }
+  .ic-picker button {
+    all: unset; cursor: pointer; padding: 7px 10px; border-radius: 6px;
+    color: #cfcfcf; white-space: nowrap;
+  }
+  .ic-picker button:hover { background: #262626; color: #fff; }
+  .ic-picker button[aria-pressed="true"] { background: #f5f5f5; color: #111; }
+  .ic-picker button:focus-visible { outline: 2px solid #7cc4ff; outline-offset: 2px; }
+  .ic-picker kbd { opacity: 0.55; margin-right: 6px; font: inherit; }
+</style>
+</head>
+<body>
+
+<section class="variant" data-name="quiet">
+  <!-- variant markup -->
+</section>
+
+<section class="variant" data-name="balanced">
+  <!-- variant markup -->
+</section>
+
+<section class="variant" data-name="vivid">
+  <!-- variant markup -->
+</section>
+
+<nav class="ic-picker" aria-label="Variants"></nav>
+<script>
+  (() => {
+    const variants = [...document.querySelectorAll('.variant')];
+    const nav = document.querySelector('.ic-picker');
+    const buttons = variants.map((section, i) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.innerHTML = `<kbd>${i + 1}</kbd>${section.dataset.name}`;
+      button.addEventListener('click', () => show(i));
+      nav.append(button);
+      return button;
+    });
+    function show(i) {
+      const index = (i + variants.length) % variants.length;
+      variants.forEach((section, j) => section.classList.toggle('is-active', j === index));
+      buttons.forEach((button, j) => button.setAttribute('aria-pressed', String(j === index)));
+      history.replaceState(null, '', `#${variants[index].dataset.name}`);
+      current = index;
+    }
+    let current = Math.max(0, variants.findIndex((s) => `#${s.dataset.name}` === location.hash));
+    show(current);
+    addEventListener('keydown', (event) => {
+      if (event.target.closest('input, textarea, select, [contenteditable]')) return;
+      const n = Number(event.key);
+      if (n >= 1 && n <= variants.length) show(n - 1);
+      else if (event.key === 'ArrowRight' && event.altKey) show(current + 1);
+      else if (event.key === 'ArrowLeft' && event.altKey) show(current - 1);
+    });
+  })();
+</script>
+</body>
+</html>

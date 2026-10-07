@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "os": [
+      "win32"
+    ],
+    "bin": {
+      "impeccable-windows-x64": "bin/impeccable.exe"
+    },
+    "cpu": [
+      "x64"
+    ],
+    "dist": {
+      "shasum": "fe438da3e892244230d569371f4275a3cef03434",
+      "tarball": "https://registry.npmjs.org/@impeccable/cli-windows-x64/-/cli-windows-x64-0.1.5.tgz",
+      "fileCount": 3,
+      "integrity": "sha512-kVZFjQIjb84mF2klxTspxE1OilalO/OmYDQnLkCJeDJCQLr6+L6HvbghJ1TChq87uyMu4GQNDPr9VV+h+Z+tCQ==",
+      "unpackedSize": 14731729
+    },
+    "name": "@impeccable/cli-windows-x64",
+    "license": "SEE LICENSE IN LICENSE",
+    "homepage": "https://impeccable.style",
+    "repository": {
+      "url": "git+https://github.com/pbakaus/impeccable.git",
+      "type": "git"
+    },
+    "description": "impeccable engine binary for windows-x64. Installed as an optional dependency of the impeccable npm package; do not depend on it directly.",
+    "version": "0.1.5"
+  },
+  "verified_integrity": "sha512-kVZFjQIjb84mF2klxTspxE1OilalO/OmYDQnLkCJeDJCQLr6+L6HvbghJ1TChq87uyMu4GQNDPr9VV+h+Z+tCQ==",
+  "files": {
+    "LICENSE": "02bb8c3b4e70190e3986c0404ad2fd8d639b4f534252d82379cc1b502b6d1812",
+    "package.json": "200faa92f7de0866d2873b9c3d8ed44081f4d2b33fc7bf191760d1043e9bb441",
+    "bin/impeccable.exe": "477e544fc8880a5e82e427490cb9a5f5adab480c0e02966d33fd50772b531c71"
+  }
+}

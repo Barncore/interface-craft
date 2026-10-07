@@ -1,0 +1,14 @@
+{
+  "name": "interface-craft",
+  "description": "interface-craft: a design workflow plugin for Claude Code",
+  "owner": { "name": "Barncore" },
+  "plugins": [
+    {
+      "name": "interface-craft",
+      "description": "Design workflow for anything with a visible surface: intent interview, exploration, building, blind review and feedback.",
+      "version": "2.1.0",
+      "source": "./",
+      "author": { "name": "Barncore" }
+    }
+  ]
+}
