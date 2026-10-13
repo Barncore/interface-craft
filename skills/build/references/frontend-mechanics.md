@@ -7,6 +7,7 @@ The craft floor for web UI. These are defaults that generated interfaces most of
 - Native elements first: `<button>` for actions, `<a href>` for navigation, real `<label>`s, `<table>` for tables. ARIA only where no native element exists.
 - Every interactive component ships its full set of states: default, hover, focus, active, disabled, loading, error. Skeletons beat spinners for content that has a shape.
 - Design the absence and failure states, not just the happy path: loading, empty, error, disabled, success, destructive, permission, long content. Empty states say what the place is and give one next action.
+- Loading is not empty. Show the empty state only once data has arrived and is empty, and keep stale content on screen while it refetches; "Nothing here yet" flashing before the first load tells the user something false.
 - Prefer undo over confirmation when recovery is safe; confirm only what is truly unrecoverable.
 - Optimistic local updates roll back with clear feedback on a server error. Feedback appears near its trigger.
 - Overlays escape `overflow` ancestors (dialog, popover, portal). A modal is for tasks that need interruption or protected focus; try inline or progressive disclosure first.
@@ -26,6 +27,17 @@ The craft floor for web UI. These are defaults that generated interfaces most of
 - On mobile, primary controls sit within thumb reach; at narrow widths data tables become stacked cards rather than shrinking or side-scrolling. Keep the same information architecture everywhere and hide nothing important on mobile.
 - Hint at hidden content: let the next carousel item peek past the edge, or show a disclosure control.
 - No fixed widths or heights on text containers; plan for long and translated strings.
+
+## Mobile browsers
+
+For websites and web apps on a phone: the fixes that separate a website in a browser from something that feels installed. Native iOS and Android apps are a different platform, covered in [native-platforms.md](native-platforms.md); nothing here applies to them.
+
+- `100vh` is the tallest viewport, measured with the browser chrome collapsed, so on load it overflows by the URL bar and hides a bottom-pinned button under it. Use `100dvh` for an app shell, which tracks the URL bar, and `100svh` for a hero, which never overflows and doesn't shift mid-scroll. Keep a `100vh` line above each as the fallback.
+- Turn the tap highlight off once, globally (`-webkit-tap-highlight-color: transparent`), because it's the loudest "this is a website" signal and it fights the press feedback you designed. Then give every tappable element its own `:active` state, since the highlight was the only feedback the browser gave.
+- An app's root gets `overscroll-behavior: none`, and inner scrollers `contain`, which keeps their own bounce but stops the page behind them moving. Leave the root rule off a scrolling document where pull-to-refresh is welcome. Never block overscroll with a `touchmove` listener that calls `preventDefault()`: it stops scrolling entirely and makes the listener non-passive.
+- For the software keyboard, `interactive-widget=resizes-content` in the viewport meta makes Android Chrome shrink the layout viewport the way iOS does, so `100dvh` layouts and bottom-pinned inputs make room for it. `enterkeyhint` (`send`, `search`, `done`) makes the return key say what it does.
+- One `theme-color` per colour scheme (`media="(prefers-color-scheme: dark)"`), matched to the colour at the very top of the page, which is the header background, not the brand colour.
+- Device emulation reproduces none of this. Sticky hover, the tap highlight, the URL bar's effect on viewport units, input zoom, the click delay, overscroll, safe areas and the software keyboard are all real-hardware behaviour, so check them on a phone.
 
 ## Geometry and depth
 
@@ -49,6 +61,10 @@ Each is legitimate when the brief earns it. Reached for by default, it marks the
 - Emoji or Unicode glyphs as an icon system (use one drawn icon family, matched to the type's weight)
 - A system font as the display voice of a page meant to have its own world
 - Bounce easing on functional UI
+- Italic accent words inside headings; monospace labels on content that isn't code or data; pill-shaped buttons as the default button shape
+- A 1px grey border round every container, or a large soft shadow on every card, doing the grouping that space should do
+- Every section fading or sliding up as it scrolls into view
+- In an app screen or tool, a decorative hero or gradient band above the task
 
 ## Images and performance
 

@@ -4,6 +4,22 @@ Every visual direction decides these, deliberately or by default. Use them to se
 
 Each line gives the dimension, its range, and what moving along it changes. The ranges are starting points, not a complete taxonomy, and the effects are working hypotheses to judge in the render.
 
+## Contents
+
+- Composition and tension
+- Space and density
+- Type as a system
+- Colour relationships
+- Images and art direction
+- Surface, light and depth
+- Motion and time
+- Interaction and agency
+- Navigation and space
+- Sequence and revelation
+- Rules and controlled surprise
+- Adaptation and limits
+- Where to look
+
 ## Composition and tension
 
 - **Focal hierarchy:** one dominant mass, or distributed emphasis. One immediate hit, or several discoveries.

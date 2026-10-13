@@ -22,15 +22,30 @@ These values come from Emil Kowalski's practice and are tuned for product UI. St
 ## Implementation
 
 1. Choose the simplest approach that keeps the intended behaviour: CSS transitions, CSS animations, the Web Animations API, or an existing motion library for springs, gestures and orchestration. Deformable surfaces, optical effects and spatial scenes need the renderers in `expressive-interaction.md`.
-2. For DOM motion, animate `transform` and `opacity`. Animating width, height, margin, padding, top or left forces layout every frame.
+2. For DOM motion, animate `transform` and `opacity`. Animating width, height, margin, padding, top or left forces layout every frame. An animated `box-shadow` repaints the element every frame and is the one people miss: animate `filter: drop-shadow()` instead, and check the render, since `drop-shadow` follows the element's visible shape rather than its box.
 3. Name the properties you transition; never `transition: all`.
 4. Transitions retarget mid-flight; keyframes restart from zero. Use transitions (or springs) for anything triggered rapidly, like toasts and toggles. `@starting-style` animates entry from `display: none` without JavaScript.
-5. In Framer Motion, the `x`, `y` and `scale` shorthands run on the main thread and drop frames under load; animate a full `transform` string instead. CSS animations survive a busy main thread better than rAF loops.
+5. Motion that runs while the page is doing heavy work (a page transition, a tab indicator during navigation, anything alongside data fetching or hydration) belongs in CSS or the Web Animations API, which survive a busy main thread better than rAF loops. Framer Motion's `x`, `y`, `scale` and `rotate` shorthands are driven by CSS variables, which aren't hardware-accelerated; they read better, so keep them by default and switch to a full `transform` string for motion that has to survive a busy page.
 6. Setting a CSS variable on a parent to drive children's transforms recalculates every child's style; set `transform` on the element directly.
-7. `will-change` sparingly, only around a known expensive animation, and removed at rest. Bound blur, filter, shadow and canvas work to small regions.
-8. Nonessential loops stop when offscreen or hidden. Scroll-driven animation needs a reason the scroll relationship matters, and a static fallback.
-9. Gate hover motion behind `@media (hover: hover) and (pointer: fine)`.
-10. Motion is never the only cue for a state.
+7. `will-change` sparingly, only around a known expensive animation. A browser can hand an animation from the CPU to the GPU mid-flight, and the hand-off can shift the element by a pixel at the start or end; `will-change` promotes it up front so no hand-off happens. So remove it at rest on a large or rarely animated layer, where it only holds memory, and leave it on a small element whose shift would show. Bound blur, filter, shadow and canvas work to small regions.
+8. Never drive an animation through React state. A `setState` per frame re-renders the component every frame, and the render alone blows the budget. State updates inside `requestAnimationFrame`, `pointermove`, `scroll` or drag handlers are the sign; drive the motion with a motion value, a ref or CSS instead.
+9. Nonessential loops stop when offscreen or hidden. Scroll-driven animation needs a reason the scroll relationship matters, and a static fallback.
+10. Gate hover motion behind `@media (hover: hover) and (pointer: fine)`.
+11. Motion is never the only cue for a state.
+
+## When it stutters
+
+For web animation that drops frames; native apps keep motion on the UI thread instead, as [native-platforms.md](native-platforms.md) says. Name the cause before changing code, and work down this list, which runs from the most common cause:
+
+1. Which properties animate? Anything but `transform` and `opacity` is the first suspect: layout properties, then `box-shadow` and `border-radius`, which don't look like layout.
+2. Is the page busy at the same moment (navigation, fetching, hydration, a long task)? Move the animation to CSS or the Web Animations API.
+3. Is React re-rendering every frame?
+4. Does it get worse as content grows? An inherited CSS variable, or too many nodes animating at once.
+5. Is a CSS variable animated, directly or through Framer Motion's shorthands?
+6. Is a `blur()` above 20px animated?
+7. Only then add `will-change: transform`. Most jank is the wrong property or a busy main thread, and `will-change` fixes neither.
+
+A frame at 60Hz has 16.7ms; at 120Hz, which most phones and many laptops now run, it has 8ms, so design against 8ms. A fast development machine proves nothing: say which findings came from reading the code and which need a recording on a real device.
 
 ## Reduced motion
 
@@ -38,4 +53,6 @@ Respect `prefers-reduced-motion` with an intentional alternative that keeps stat
 
 ## Check
 
-Inspect enter, interruption, reversal and exit. A beautiful entrance with a confused exit is still confused. For gestures, read [direct-manipulation.md](direct-manipulation.md); for measured containers and exit lifecycles, [interaction-craft.md](interaction-craft.md).
+Inspect enter, interruption, reversal and exit. A beautiful entrance with a confused exit is still confused.
+
+To fix motion that feels wrong, take the earliest move that works: delete it (it's frequent, keyboard-triggered or has no purpose), reduce it (shorter, smaller, fewer properties), fix the easing, fix the origin and physicality, then make it interruptible. Retuning the curve of an animation that shouldn't exist is wasted polish. For gestures, read [direct-manipulation.md](direct-manipulation.md); for measured containers and exit lifecycles, [interaction-craft.md](interaction-craft.md).

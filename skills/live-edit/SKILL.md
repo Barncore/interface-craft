@@ -1,6 +1,6 @@
 ---
 name: live-edit
-description: Live-edit a running local web page by pointing at elements. Use when I want to click an element in my local site, try variants in place, and keep or discard them.
+description: Live-edit a running local web page by pointing at elements. Use when the user wants to click an element in their local site, try variants in place, and keep or discard them.
 ---
 
 # Live edit

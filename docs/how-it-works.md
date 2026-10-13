@@ -80,11 +80,17 @@ A reviewer that watched the work being built tends to agree with it. So `verify`
 
 | Reviewer | What it checks | What it never sees |
 | --- | --- | --- |
-| Lint | Runs the deterministic detector and checks for known generated-UI patterns | The brief or anyone's taste, because its value is objectivity |
+| Lint | Runs the deterministic detector and checks for known generated-UI patterns; on a native iOS or Android app, the native pattern checks instead | The brief or anyone's taste, because its value is objectivity |
 | Correctness | Accessibility and interface standards. The only track that can block delivery. | The craft critique |
 | Craft | Whether the work feels arrived at and serves the brief | The detector output, which would anchor it |
 
 Findings come in three kinds that never get mixed up. Hard-gate failures are demonstrable defects. Warnings are likely problems that need context. Critique is a judgment call, and judgment calls are yours. A glow or a serif can be exactly right for a brief, so the detector reports those as critique, never as defects.
+
+## Web and native keep separate rules
+
+A website and a native app fail in different ways, so they get separate checks rather than one blended list. Some signs of generated work look alike on both, such as cards inside cards or emoji standing in for icons, but the fix differs: grouped lists and the platform's icon set on a phone, CSS on the web. One runs in reverse. On the web, a system font as a page's display voice reads as generated; on a phone, replacing the system font everywhere does, because system type carries Dynamic Type and the platform's feel. So the web checks live in `verify/references/detector.md`, the native ones in `verify/references/native-checks.md`, and a sign that holds on both appears in both, each with its own fix. Guidance that holds everywhere, such as testing with worst-case data or judging each viewport on its own, says so and splits only its fixes.
+
+The same care applies to sources. Emil Kowalski's motion and gesture defaults are tuned for product interfaces, so they set the defaults for task UI, and expressive or immersive work follows its brief instead.
 
 ## One bad mood doesn't become a rule
 
@@ -108,4 +114,4 @@ All three fail open: if one breaks, your session carries on. The catch with fail
 
 ## Where it came from
 
-interface-craft started as a Claude Code plugin built around one person's taste profile. It had strong review machinery, but its rules pushed every project toward the same look. Its sibling, [Design Layer](https://github.com/Barncore/design-layer), was developed for Codex and got the design thinking right: the intent interview, the evolving brief, and taste as context rather than a template. Version 2 merged the two. It kept Design Layer's thinking and interface-craft's Claude-specific machinery, and rewrote the text throughout. Version 2.1 rebuilt the interview around seeds, reading boards and the research in [research.md](research.md).
+interface-craft started as a Claude Code plugin built around one person's taste profile. It had strong review machinery, but its rules pushed every project toward the same look. Its sibling, [Design Layer](https://github.com/Barncore/design-layer), was developed for Codex and got the design thinking right: the intent interview, the evolving brief, and taste as context rather than a template. Version 2 merged the two. It kept Design Layer's thinking and interface-craft's Claude-specific machinery, and rewrote the text throughout. Version 2.1 rebuilt the interview around seeds, reading boards and the research in [research.md](research.md). Version 2.2 added native app checks adapted from Expo's skills, and more of Emil Kowalski's guidance: worst-case data, motion review, stutter diagnosis and gesture defaults.

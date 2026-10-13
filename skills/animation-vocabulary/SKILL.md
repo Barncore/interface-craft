@@ -1,6 +1,6 @@
 ---
 name: animation-vocabulary
-description: Names motion and interaction effects. Use when I ask what an effect is called, or describe an animation, transition, scroll or WebGL effect without knowing the term to ask for.
+description: Names motion and interaction effects. Use when the user asks what an effect is called, or describes an animation, transition, scroll or WebGL effect without knowing the term to ask for.
 ---
 
 # Animation vocabulary

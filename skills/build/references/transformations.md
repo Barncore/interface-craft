@@ -35,7 +35,7 @@ Find the essence first: the one job, the content that serves it. Then cut by dim
 
 ## Harden
 
-Run the extreme-input matrix: empty, one, many, very long, special characters, other languages and directions, slow and failed networks, refresh mid-flow, double submits. Fix text containers that assume English lengths, give every failure a real message, validate on the server too, and keep one failing component from blocking the whole interface.
+Run the extreme-input matrix: empty, one, many, very long, special characters, other languages and directions, slow and failed networks, refresh mid-flow, double submits. Build the values the way [worst-case-data.md](../../verify/references/worst-case-data.md) says: plausible or schema-backed, entered through the fixture rather than the styles. Fix text containers that assume English lengths, give every failure a real message, validate on the server too, and keep one failing component from blocking the whole interface.
 
 ## Overdrive
 

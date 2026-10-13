@@ -10,7 +10,7 @@ Implement the brief as a design engineer: the project's character intact, its sy
 ## What done looks like
 
 - The work expresses the brief's confirmed intent, and you can state its design thesis in a sentence or two: subject, audience, purpose and the visual logic connecting them.
-- It reuses the project's existing tokens, components and conventions, unless the brief explicitly replaces them. No rival mini-system appears in the CSS.
+- It reuses the project's existing tokens, components and conventions, unless the brief explicitly replaces them. Without a `DESIGN.md`, find the system before adding to it: a styling library in the package manifest (Tailwind, NativeWind, Tamagui, a CSS-in-JS theme), a token or theme file, CSS custom properties. Extend what you find in its own idiom, names and scale. Where a project has only repeated raw values, derive tokens from the most frequent ones, snapped to a 4-unit scale, rather than inventing a fresh set. No rival mini-system appears beside the existing one, in CSS or in a native theme.
 - Execution matches the vision. Expressive work gets enough craft to land; minimal work gets exact spacing, type, rhythm and states.
 - Every relevant state exists: loading, empty, error, disabled, success, destructive, long content. It works by keyboard, shows visible focus, keeps readable contrast, honours reduced motion, and holds up at narrow and wide viewports.
 - Real content wherever it exists. Invented copy reads like the product; claims, prices and customers are never invented.
@@ -35,6 +35,7 @@ Read [frontend-mechanics.md](references/frontend-mechanics.md) for any web UI wo
 | [concept-fidelity.md](references/concept-fidelity.md) | The user chose an image, comp or prototype as the build target |
 | [transformations.md](references/transformations.md) | Feedback like bolder, quieter, more delightful, distil, harden, overdrive |
 | [native-platforms.md](references/native-platforms.md) | iOS, iPadOS or Android work |
+| [worst-case-data.md](../verify/references/worst-case-data.md) | Lists, cards, tables or any component that shows user data |
 | [expressive-interaction.md](../explore/references/expressive-interaction.md) | Spatial, material or experimental interaction, shaders, 3D |
 | [repertoire.md](../explore/references/repertoire.md) | A component or effect reference would help |
 

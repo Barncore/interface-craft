@@ -1,6 +1,6 @@
 ---
 name: feedback
-description: Record my explicit design reactions and promote repeated ones. Use when I pick, reject, rate or explain a design choice, dismiss a review finding, or ask what you've learned about my design taste.
+description: Records the user's explicit design reactions and promotes repeated ones. Use when the user picks, rejects, rates or explains a design choice, dismisses a review finding, or asks what's been learned about their taste.
 ---
 
 # Feedback

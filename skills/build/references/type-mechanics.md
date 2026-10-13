@@ -32,7 +32,7 @@ Use the property when one exists: `font-weight: 650`, `font-optical-sizing: auto
 - Long-form text sits around 60 to 75 characters per line, in any unit.
 - `text-wrap: balance` on headings, `text-wrap: pretty` on short descriptions, neither on long-form paragraphs.
 - `overflow-wrap: break-word` where URLs, IDs or long words could escape; `white-space: nowrap` on labels and badges where a break looks broken; flex children need `min-width: 0` to truncate.
-- Truncate with `text-overflow: ellipsis` or `line-clamp`, and keep the full value reachable when it matters.
+- Decide per field. Wrap what identifies something (names, titles in a detail view). Truncate at the end where the start carries the meaning (a role, a message preview), with the full value reachable. Truncate in the middle where items differ at the end (file names, emails on a shared domain, paths, hashes), since end truncation makes them identical; CSS can't do this, so split the string in script, while React Native has `ellipsizeMode="middle"` and SwiftUI `.truncationMode(.middle)`. Clamp multi-line previews (`line-clamp`) so card heights stay predictable. Never truncate numbers, amounts, dates or anything the user compares; give them the room.
 - `text-align: start` in interfaces; justify only in a deliberate editorial layout.
 
 ## Details

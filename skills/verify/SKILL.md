@@ -26,7 +26,7 @@ Dispatch all three in one message so they run concurrently. Give each the absolu
 
 | Agent | Answers | Give it | Withhold |
 | --- | --- | --- | --- |
-| `lint-reviewer` | Does it contain known generated-UI patterns? | Changed files, any rendered URL, `DESIGN.md` (its lint exceptions), the path to [detector.md](references/detector.md) | The brief, taste, everything else |
+| `lint-reviewer` | Does it contain known generated-UI patterns? | Changed files, any rendered URL, `DESIGN.md` (its lint exceptions), the path to [detector.md](references/detector.md); for a native app, also the screenshots and the path to [native-checks.md](references/native-checks.md) | The brief, taste, everything else |
 | `correctness-reviewer` | Does it meet interface and accessibility standards? | Screenshots, changed files, the brief's hard constraints, paths to [accessibility-gates.md](references/accessibility-gates.md), [interface-checklist.md](references/interface-checklist.md) and [gate-policy.md](references/gate-policy.md) | Taste |
 | `craft-reviewer` | Does it feel arrived at, and does it serve this brief? | Screenshots, `DESIGN-BRIEF.md`, `DESIGN.md`, the paths to [the creative philosophy](../route/references/creative-philosophy.md) and [critique-rubric.md](references/critique-rubric.md), and the applicable taste slice labelled as contextual evidence | Detector output and the other reviewers' findings |
 
@@ -36,7 +36,7 @@ Lint and correctness stay away from taste because their value is objectivity; ta
 
 Merge the three reports using [gate-policy.md](references/gate-policy.md). The same defect found twice is one finding, at the higher severity. A defect that recurs across many places is one systemic finding with a count. Order by severity, then lint before correctness before craft, cheapest to resolve first.
 
-Open the report with the method (for example, "rendered at 390 and 1440, three reviewers") and the verdict, which follows from the findings: `Block` if a hard gate failed, `Needs review` if gates pass but material warnings remain, `Approve` otherwise. A degraded run (no render, or fewer than three reviewers) opens with a `DEGRADED` line and the reason. For each finding give: location (`file:line` or the screenshot region), what's wrong, why it matters, and the fix. No preamble, no praise paragraph.
+Open the report with the method (for example, "rendered at 390 and 1440, three reviewers") and the verdict, which follows from the findings: `Block` if a hard gate failed, `Needs review` if gates pass but material warnings remain, `Approve` otherwise. A degraded run (no render, or fewer than three reviewers) opens with a `DEGRADED` line and the reason. For each finding give: location (`file:line` or the screenshot region), what's wrong, why it matters, and the fix. For a motion finding, the fix follows the order in the Check section of [motion-mechanics.md](../build/references/motion-mechanics.md): deleting the animation comes before tuning it. No preamble, no praise paragraph.
 
 Craft findings are arguments for the user to adjudicate; never apply them on your own. Confirmed lint and correctness defects can be fixed directly when you are verifying your own build. When the user asked only for a review, report and change nothing.
 

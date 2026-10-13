@@ -35,3 +35,5 @@ Label every taste claim with its source: the project (`DESIGN.md`, the brief, th
 ## What to report
 
 What is working, as specifically as what isn't, so a revision knows what to preserve. Then the few changes that would most improve the design, each with the evidence. Where you are uncertain, say what would settle it.
+
+Judge each viewport on its own, and each platform for a native app. The weakest one is the design's level, never an average: a page that sings at 1440 and crowds at 390 is a crowded page on phones. A difference the platform calls for (system fonts, control styling, safe areas, navigation idiom) is not a defect; one platform's idiom carried onto the other is.

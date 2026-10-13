@@ -1,6 +1,6 @@
 ---
 name: intent-interview
-description: Discovery interview for a new website or app direction. Use when starting a site or UI whose look isn't decided, or when asked to interview me, find the direction, or write the design brief.
+description: Discovery interview for a new website or app direction. Use when starting a site or UI whose look isn't decided, or when the user asks to be interviewed, to find the direction, or to write the design brief.
 ---
 
 # Intent interview

@@ -4,6 +4,12 @@ A seed is one reading of the project: small, cheap, and likely to be dropped. Se
 
 Seeds exist because a model's default is one typical reading, formed almost at once. Holding several, ideally contradictory, readings delays that collapse until the user's answers can choose. They gain detail as their number shrinks: a line or two each after round one, a full spec for the three that survive round two. Detail added too early makes a seed hard to drop and anchors everything after it.
 
+## Contents
+
+- After round one
+- Independent seeding
+- After round two
+
 ## After round one
 
 ### Themes, paradox, default

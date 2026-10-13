@@ -54,7 +54,7 @@ Then run the setup check and, for the round-three images, set up Codex. [docs/se
 | `intent-interview` | The three-round interview, seeds, reading boards and the direction. |
 | `explore` | Concept directions and one-axis variants, compared full size. |
 | `build` | Implementation, with references for type, colour, motion, gesture, copy and native platforms. |
-| `verify` | Screenshots plus three blind reviewer agents. |
+| `verify` | Screenshots plus three blind reviewer agents, with separate pattern checks for websites and native apps, and worst-case data for anything that shows user data. |
 | `feedback` | An append-only record of your reactions, and taste proposals from repeats. |
 | `deslop` | Strips generated cruft without touching what does work. |
 | `live-edit` | Point at an element in your running local site and try variants in place (Windows). |
@@ -75,6 +75,7 @@ One cost to know about: the routing hook adds about 60 tokens to every prompt in
 
 - Whether the interview reliably produces better designs hasn't been measured beyond a handful of real projects and tests. It's a considered process, not a proven one.
 - The bundled detector catches some things and misses others; in a pilot it missed an unlabelled input. An empty report is not a clean bill of health, and the correctness reviewer still checks by hand.
+- Native iOS and Android apps get pattern checks, not the detector. File searches exist for React Native and Expo only; SwiftUI, Compose and Flutter are checked from screenshots, and iOS screenshots need a Mac.
 - The Codex image bridge depends on the Codex CLI's headless mode and its built-in image tool. If OpenAI changes either, the images stop and the interview carries on in words.
 
 ## Credits and licence

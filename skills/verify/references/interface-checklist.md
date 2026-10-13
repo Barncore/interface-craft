@@ -13,7 +13,7 @@ Mechanics that generated interfaces most often get wrong. The correctness review
 
 ## Forms
 
-- Inputs carry a meaningful `name`, the right `type` and `inputmode`, and an `autocomplete` value where one applies.
+- Inputs carry a meaningful `name`, the right `type` and `inputmode`, an `autocomplete` value where one applies, and an `enterkeyhint` where the return key does something specific.
 - Paste is never blocked.
 - Spellcheck is off for emails, codes and usernames.
 - The submit button stays enabled until the request starts, then shows progress.
@@ -27,6 +27,12 @@ Mechanics that generated interfaces most often get wrong. The correctness review
 - Animate `transform` and `opacity`, and list the transitioned properties rather than using `transition: all`.
 - `transform-origin` matches where the motion should come from; SVG transforms go on a group with `transform-box: fill-box`.
 - Animations can be interrupted by new input.
+- Nothing animates on a keyboard shortcut, a command-palette toggle, or anything used a hundred times a day.
+- No `ease-in` on UI motion: entrances and exits ease out, on a strong custom curve rather than a built-in one.
+- UI motion stays under 300ms unless a reason is stated (an authored focal entrance, explanatory or marketing motion).
+- Anything fired rapidly (toasts, toggles) uses transitions or springs, not keyframes, so a repeat retargets instead of restarting from zero.
+- A press-and-hold is slow while the user decides and fast on release, not symmetric.
+- Several hand-typed curves that almost match are a missing motion token.
 
 ## Text and content
 
@@ -53,13 +59,14 @@ Mechanics that generated interfaces most often get wrong. The correctness review
 
 ## Touch, layout and theming
 
-- Taps don't wait on double-tap zoom (`touch-action: manipulation`), and the tap highlight is set deliberately.
-- Modals, drawers and sheets contain their scroll (`overscroll-behavior: contain`).
+- Taps don't wait on double-tap zoom (`touch-action: manipulation`). The tap highlight is off, and every tappable element has its own `:active` state instead.
+- Modals, drawers and sheets contain their scroll (`overscroll-behavior: contain`), and an app's root sets `overscroll-behavior: none` unless pull-to-refresh is wanted.
+- Full-height layouts use `100dvh` (app shells) or `100svh` (heroes), never a bare `100vh`.
 - During a drag, text selection is off and the dragged element is inert.
 - Autofocus is rare and avoided on touch devices.
 - Full-bleed layouts respect safe-area insets, and no container shows an accidental scrollbar.
 - Layout uses flex and grid rather than JavaScript measurement.
-- Dark themes set `color-scheme: dark`, the `theme-color` meta matches the page, and native selects get explicit colours.
+- Dark themes set `color-scheme: dark`, there's one `theme-color` per colour scheme matched to the header's colour, and native selects get explicit colours.
 
 ## Locale
 
