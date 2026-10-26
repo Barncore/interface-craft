@@ -6,7 +6,7 @@
     {
       "name": "interface-craft",
       "description": "Design workflow for anything with a visible surface: intent interview, exploration, building, blind review and feedback.",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "source": "./",
       "author": { "name": "Barncore" }
     }

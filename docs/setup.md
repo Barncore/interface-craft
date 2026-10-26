@@ -10,7 +10,7 @@ You need Claude Code and Node.js 18 or later. In a terminal:
 node --version
 ```
 
-Anything from `v18` up is fine. If Node is missing, install the LTS version from [nodejs.org](https://nodejs.org). The plugin's hooks and scripts are plain Node with no packages to install, but they do need Node itself.
+Anything from `v18` up is fine. If Node is missing, install the LTS version from [nodejs.org](https://nodejs.org). The plugin's hooks and scripts are plain Node with no packages to install, but they do need Node itself. Two optional review scripts need more: `capture-motion.mjs`, which captures animation frame by frame, uses Playwright from your project plus Chrome or Edge, and `compare-renders.mjs`, which scores a build against a reference image, uses [FFmpeg](https://ffmpeg.org/download.html). Without them, reviews fall back to checking motion and fidelity by eye, and say so.
 
 ## 2. Install the plugin
 

@@ -33,6 +33,7 @@ Mechanics that generated interfaces most often get wrong. The correctness review
 - Anything fired rapidly (toasts, toggles) uses transitions or springs, not keyframes, so a repeat retargets instead of restarting from zero.
 - A press-and-hold is slow while the user decides and fast on release, not symmetric.
 - Several hand-typed curves that almost match are a missing motion token.
+- Loops and stories end exactly on their resting state, and a replay starts from the same frame as the first run: the rest, seam and reset checks in `render-and-capture.md`.
 
 ## Text and content
 

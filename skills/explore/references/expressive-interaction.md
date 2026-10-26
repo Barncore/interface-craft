@@ -41,6 +41,30 @@ Match the intensity to the experience and how often it repeats. A restrained wor
 
 Focus creates impact. Two extraordinary moments competing on one screen read as noise.
 
+## Product visuals that act out their job
+
+An option for marketing and product pages, never a default. When a page shows the product inside a visual (a chart, a list, a calendar, a flow, a prompt box) and the brief or the user wants the page to show the product working, that visual can act out what it does on a loop: the chart gets read, the list receives a new item, the prompt gets typed. Offer it when the brief points that way, and add it only when the user picks it. Give it to the one or two visuals that carry the page rather than to every card, because several stories running at once read as noise.
+
+- **Write the story first,** one sentence per visual: "a new lead lands on top and the older ones step back".
+- **Use the design's own elements.** Its rows, bars, dots and chips do the acting. Any helper the story needs (a cursor, an extra item) matches their style.
+- **Start and end on the resting design.** Each run leaves the designed state, acts, and returns to it exactly, so the page looks finished at any moment. Check it with the rest and seam checks in `verify/references/render-and-capture.md`.
+- **One story per visual, three to eight seconds,** with a clear beat every second or two, so the motion reads as intended rather than as a glitch. When two visuals tell stories, offset them so attention moves in reading order.
+- **Change text only when the text is the point:** counters, typing, a tooltip value. All other text stays still, and stays live HTML.
+- **Start when the section scrolls into view, pause when it leaves,** and show the resting design under reduced motion.
+
+| Visual | Story |
+| --- | --- |
+| Stack of items (leads, notifications, files) | A new item lands on top, the others step back one place, the last one leaves |
+| Line or area chart | A marker glides along the line while the tooltip value counts |
+| Bar chart or grid of cells | Bars move like a live feed, then settle back to their designed heights |
+| Donut or gauge | The ring sweeps again from the top, or one segment eases out and back |
+| Table or list | A highlight steps down the rows and a preview loads for the active one |
+| Calendar | A highlight searches for an open slot and the event glides into it |
+| Flow or pipeline | Pulses travel along the connectors and each node lights as one passes |
+| Prompt or form | The input deletes and retypes, then the result appears |
+| Counters | Numbers count up together with the chart that drives them |
+| Logo row | A marquee that moves exactly one full set per loop, so the join never shows |
+
 ## Choose the renderer
 
 Use the simplest approach that keeps the defining behaviour, and reuse the project's stack where it fits.

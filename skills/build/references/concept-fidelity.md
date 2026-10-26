@@ -23,13 +23,30 @@ Decide by what the concept depicts, never by what feels easiest in the current s
 
 ## Build in two phases
 
-1. **Reproduce.** Rebuild the concept at its own viewport until a screenshot at the same size overlays it closely: materials, components, elevation and assets included. The only allowed differences are fonts (the closest obtainable face), icons (unless a library was chosen) and real defects in the concept. Check type early: render one headline word against the concept; a visibly wider or lighter silhouette means the wrong face. Prove the first screen before building past it. Models reliably believe their recreation matches when it doesn't, so the side-by-side comparison is the authority. A region that keeps losing the comparison ships as a rendered asset composited into the page.
+1. **Reproduce.** Rebuild the concept at its own viewport until a screenshot at the same size overlays it closely: materials, components, elevation and assets included. The only allowed differences are fonts (the closest obtainable face), icons (unless a library was chosen) and real defects in the concept. Check type early: render one headline word against the concept; a visibly wider or lighter silhouette means the wrong face. Prove the first screen before building past it. Models reliably believe their recreation matches when it doesn't, so the side-by-side comparison is the authority, and a measured comparison (below) keeps it honest. A region that keeps losing the comparison ships as a rendered asset composited into the page.
 2. **Bring it to life.** Only then make static regions animate and respond, then handle reveals, motion and responsiveness. Translate to real content, semantic controls, keyboard use, text growth and smaller screens, keeping the reading order and defining relationships rather than shrinking the desktop picture. Explain any material departure and why.
 
 Keeping the palette and mood while redrawing the layout is a second art direction, not an adaptation. Ask before substituting a different visual driver.
 
 Keep each generated asset's prompt alongside it (a sidecar note) so later work understands the asset. Generated imagery is material, not proof: it never stands in for real photographs, testimonials or product claims.
 
+## Measure the match
+
+Screenshot the build at the concept's own size, then score it against the concept with [compare-renders.mjs](../../verify/scripts/compare-renders.mjs), which reports PSNR (in dB, higher is closer) for the whole frame and for the five worst cells of a grid, and writes an amplified difference image:
+
+```bash
+node "<verify skill folder>/scripts/compare-renders.mjs" concept.png build.png --sigma 8 --diff diff.png
+```
+
+Read the number for what it can see. These bands come from one calibration page, a card layout rendered 1600 pixels wide, so treat them as a guide rather than a gate. Scored after a blur of 8 pixels:
+
+- A block moved by 8px, a different colour, different data in a chart and a different font's text mass each scored between 27 and 30 dB. Around 30 or below means the composition differs: find the region in the worst cells and fix it first.
+- A half-pixel or 1px shift and a missing border scored between 44 and 51 dB. Above 40, what differs is detail, which the blur hides on purpose. A generated concept never matches a build in detail, so don't chase a higher number there.
+
+Run it after each pass. The score should rise; a pass that lowers it moved away from the concept.
+
+When the target is exact (a screenshot of an existing page, or an export from a design tool), the build should match in detail too, so drop to `--sigma 1.2` and read the difference image, not the number. At that blur, a missing border scored 40 dB, a wrong corner radius 49, and a missing shadow above 40: all would pass any threshold, and all show plainly in the difference image. Meanwhile a half-pixel shift scored lower than any of them, so a low score with doubled edges in the difference image is an offset, not a structural error. Fix structure first and leave sub-pixel offsets alone.
+
 ## Check
 
-Compare the rendered result with the concept at the composition level first, then type metrics, optical alignment, spacing, asset quality and interaction states. Say which parts were actually rendered and compared.
+Compare the rendered result with the concept at the composition level first, then type metrics, optical alignment, spacing, asset quality and interaction states. Say which parts were actually rendered and compared, and give the measured score.

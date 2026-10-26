@@ -45,6 +45,8 @@ Then run the setup check and, for the round-three images, set up Codex. [docs/se
 | Node.js 18 or later | yes | The hooks and scripts are plain Node with no dependencies |
 | Codex CLI signed in with a ChatGPT account | for images | Without it, the interview still runs and round three happens in words |
 | Windows x64 | for the bundled detector and live editing | Elsewhere, reviews use the model's own pattern checks instead |
+| Playwright in the project, plus Chrome or Edge | for frame-by-frame motion capture | Without it, motion is checked by stepping through the browser's DevTools |
+| FFmpeg | for scoring a build against its concept, and for loop checks | Without it, the comparison is by eye |
 
 ## What's inside
 

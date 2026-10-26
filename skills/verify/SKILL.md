@@ -16,7 +16,7 @@ Review the diff, not the codebase, unless the user asks for a full audit; then s
 
 ## 1. Render and capture
 
-Render the artifact and capture it at the viewports and states that matter, following [render-and-capture.md](references/render-and-capture.md): at least 390px and 1440px wide, plus hover, focus, empty, loading, error and any theme variants, with the console read for errors.
+Render the artifact and capture it at the viewports and states that matter, following [render-and-capture.md](references/render-and-capture.md): at least 390px and 1440px wide, plus hover, focus, empty, loading, error and any theme variants, with the console read for errors. When the work moves, capture its frames at exact times and give the reviewers the contact sheet.
 
 If nothing can render it, say so, review from source, and mark every finding `source-only`. Craft judgments from source are inference, and they never feed taste promotion.
 

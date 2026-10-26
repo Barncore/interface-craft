@@ -49,5 +49,5 @@ When the user chooses, integrate only that option, or a combination they name. R
 ## More references
 
 - [repertoire.md](references/repertoire.md): component and effect families, and where to find live examples (21st.dev, Designeer, Recent).
-- [expressive-interaction.md](references/expressive-interaction.md): read when material behaviour, spatial depth or experimental interaction could define the experience, even if the user never named a technique.
+- [expressive-interaction.md](references/expressive-interaction.md): read when material behaviour, spatial depth or experimental interaction could define the experience, even if the user never named a technique, and when a marketing page shows product visuals that could act out their job.
 - [motion-opportunities.md](references/motion-opportunities.md): read when asked where motion would help, or to make an interface feel more alive.

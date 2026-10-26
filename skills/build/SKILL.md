@@ -36,7 +36,7 @@ Read [frontend-mechanics.md](references/frontend-mechanics.md) for any web UI wo
 | [transformations.md](references/transformations.md) | Feedback like bolder, quieter, more delightful, distil, harden, overdrive |
 | [native-platforms.md](references/native-platforms.md) | iOS, iPadOS or Android work |
 | [worst-case-data.md](../verify/references/worst-case-data.md) | Lists, cards, tables or any component that shows user data |
-| [expressive-interaction.md](../explore/references/expressive-interaction.md) | Spatial, material or experimental interaction, shaders, 3D |
+| [expressive-interaction.md](../explore/references/expressive-interaction.md) | Spatial, material or experimental interaction, shaders, 3D; product visuals on a marketing page that could act out their job |
 | [repertoire.md](../explore/references/repertoire.md) | A component or effect reference would help |
 
 ## Decisions
